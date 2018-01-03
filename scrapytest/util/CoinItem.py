@@ -1,0 +1,10 @@
+class CoinItem:
+    cp_name = ""
+    cp_key = ""
+    cp_type = ""
+    cp_value = ""
+    cp_open = ""
+    cp_close = ""
+    cp_height = ""
+    cp_low = ""
+    last_ud = ""

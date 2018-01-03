@@ -1,0 +1,765 @@
+<!DOCTYPE html><html lang="zh-cn" class="zh-cn hb-night windsMind"><head><meta charset="UTF-8"><title>13222.35 BTC/USDT 比特币交易平台|以太坊|莱特币交易比特币的币币交易平台-火币pro</title><meta name="keywords" content="比特币交易平台,比特币,BTC,比特币价格,比特币行情,USDT,莱特币,BCC,以太坊,ETH,以太经典,火币pro"><meta name="description" content="火币专业交易站是全球著名的比特币交易平台,使莱特币LTC,以太坊ETH,BCC,以太经典(ETC),达世币DASH,瑞波XRP,PAY,BTG,OMG,EOS,RDN,SNT,KNC,MTL,QSP,RCN,AST,TNT,BCD,TNB等数字货币以比特币BTC,USDT进行交易！提供实时比特币价格,比特币行情."><link href="/charting_library/static/night.css" rel="preload" as="style"><link href="/charting_library/static/day.css" rel="preload" as="style"><meta name="format-detection" content="telephone=no,email=no,address=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="//www.huobipro.com"><link rel="dns-prefetch" href="//api.huobipro.com"><link rel="dns-prefetch" href="//otc.huobipro.com"><link rel="dns-prefetch" href="//www.huobi.pro"><link rel="dns-prefetch" href="//api.huobi.pro"><link rel="dns-prefetch" href="//otc.huobi.pro"><link rel="dns-prefetch" href="//www.huobi.com"><link rel="dns-prefetch" href="//uc-cn.huobi.com"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="//static.ads-twitter.com/uwt.js"></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PB5LRHQ"></script><script>var pathList = {
+        "coin_coin" : 1,
+        "btc_trade" : 1,
+        "usdt_trade" : 1,
+        "eth_trade" : 1,
+    }
+    function getPageSymbol(){
+        var symbol_path = location.pathname.match(/([^_\/]+_[^\/]+)\/([^\/]+)/);
+        var symbol_hash = location.hash.replace("#","");
+
+        if(symbol_hash){
+            return symbol_hash.split("_").concat([symbol_path[2]]);
+        }else if(symbol_path){
+            if(pathList[symbol_path[1]]){
+                return [null,null].concat([symbol_path[2]])
+            }else{
+                return symbol_path[1].split("_").concat([symbol_path[2]]);  
+            }
+        }
+        return null;
+    }
+    function $_GET(par) {
+        var arg;
+        if (!window['getSearchParameters']) {
+            arg = location.search.replace("?", "").split("&");
+            window['getSearchParameters'] = {};
+            for (var tmp, i = 0, l = arg.length; i < l; i++) {
+                tmp = arg[i].split("=");
+                window['getSearchParameters'][tmp[0]] = decodeURIComponent(tmp[1]);
+            }
+        }
+
+        return window['getSearchParameters'][par]
+    }
+	function PageCallback(key,fn){
+		if(!top.window["KCABLLACEGAG"]){
+			top.window["KCABLLACEGAG"] = {};
+		}
+		key && (top.window.KCABLLACEGAG[key] = fn);
+	}
+	PageCallback();
+	function getPageCallback(k){
+		return top.window.KCABLLACEGAG[k]
+	}
+    function getCookie(name){
+        var value = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
+        return (value) ? decodeURIComponent(value[1]) : null;
+    };
+    (function() { //setTheme
+        var $html = document.querySelector('html')
+        try {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'hb-day') {
+                $html.className = $html.className.replace('hb-night', 'hb-day')
+            }
+            if (theme === 'hb-night') {
+                $html.className = $html.className.replace('hb-day', 'hb-night')
+            }
+            if (!theme) {
+                localStorage.setItem('theme', 'hb-night');
+            }
+        } catch (e) {
+            console.warn('不支持localStorage')
+        } finally {
+            if($html.className.indexOf('hb') === -1) {
+                $html.className += ' hb-night'
+            }
+        }
+    })();
+    (function() {
+        document.querySelector('html').className += ' windsMind'
+    })();
+    function browserLang(){
+        return (navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).toLowerCase();
+    }
+    'ENV' !== 'dev' && langPath();
+    function langPath(lang){
+        var _pathArray = location.pathname.split('/'),
+            _path      = _pathArray[1],
+            _lang      = lang || (localStorage.lang ? localStorage.lang.toLowerCase() : browserLang()),
+            _langList  = ['en-us', 'zh-cn', 'zh-hk', 'ko-kr', 'ja-jp', 'ru-ru', 'de-de','es-es','fr-fr'],
+            _langDefault = 'en-us',
+            _search    = location.search;
+        if(_lang === _langDefault || !_lang || _langList.indexOf(_lang)===-1){
+            return
+        }
+        if(_langList.indexOf(_path) === -1 || _path === _langDefault){
+            _pathArray.splice(1, 0, _lang);
+            location.href = _pathArray.join('/')+_search;
+        }
+    }
+
+    localStorage.lang='zh-cn';
+    localStorage.root='/zh-cn/';
+    //dropdown Type
+    dropdownType = {
+        "marginAccount":"杠杆账户",
+        "account":"账户",
+        "margin-account":"杠杆账户",
+        "Coin":"币种",
+        "Type":"类型"
+    };
+    //杠杆type
+    marginFinanceType = {
+        "apply-loan":"申请借贷",
+        "repay-loan":"归还借贷",
+        "auto-reply-loan":"归还借贷",
+        "auto-reply-from-spot":"归还借贷",
+        "repay-interest":"归还利息",
+        "auto-reply-interest":"归还利息",
+        "margin-transfer-in":"从交易账户转入",
+        "margin-transfer-out":"转出到交易账户"
+    };
+    //type
+    financeType = {
+        "deposit-virtual":"充币",
+        "withdraw-virtual":"提币",
+        "oldhuobi-to-bitexpro":"从主站转入",
+        "bitex-to-bitexpro":"从主站转入",
+        "bitexpro-to-bitex":"转出到主站",
+        "bitexpro-to-oldhuobi":"转出到主站",
+        "marketing-account-transfer-in":"活动奖励",
+        "operations-account-loan-to-user-trade":"从系统转入",
+        "operations-account-expenditure":"从系统转入",
+        "operations-account-deposit-compensate-expenditure":"从系统转入",
+        "operations-account-withdraw-compensate-expenditure":"从系统转入",
+        "operations-account-recycling-user-trade-principal":"转出到系统",
+        "operations-account-earning":"转出到系统",
+        "operations-account-withdraw-compensate-earning":"转出到系统",
+        "operations-account-deposit-compensate-earning":"转出到系统",
+        "rebate-account-transfer-in":"推荐奖励",
+        "otc-to-pro":"从OTC转入",
+        "pro-to-otc":"转出到OTC",
+        "fork-transfer-in":"分叉转币生成",
+        "fork-transfer-out":"分叉转币消耗",
+        "margin-transfer-in":"转出到杠杆账户",
+        "margin-transfer-out":"从杠杆账户转入",
+        "inspire-account-to-user-trade": "从激励账户转入",
+        "user-trade-to-inspire-account": "转出到激励账户"
+        
+        //老版本
+        // 'deposit-legal': '从主账户转入',
+        // 'withdraw-legal': '转出到主账户',
+        // 'deposit-virtual': '充币', //查看
+        // 'withdraw-virtual': '提币',//查看  只有撤销
+        // 'marketing-account-transfer-in': '活动奖励',
+        // 'rebate-account-transfer-in': '推荐奖励',
+        // 'bitex-to-bitexpro': '转出到专业区',
+        // 'bitexpro-to-bitex': '从专业区转入',
+        // 'operations-account-loan-to-user-trade': '从系统转入',
+        // 'operations-account-recycling-user-trade-principal': '转出到系统',
+        // 'operations-account-expenditure': '从系统转入',
+        // 'operations-account-deposit-compensate-expenditure': '从系统转入',
+        // 'operations-account-withdraw-compensate-expenditure': '从系统转入',
+        // 'operations-account-deposit-compensate-earning': '转出到系统',
+        // 'operations-account-withdraw-compensate-earning': '转出到系统',
+        // 'operations-account-earning': '转出到系统',
+        // 'fork-transfer-in': '分叉转币生成',
+        // 'fork-transfer-out': '分叉转币消耗',
+        // 'oldhuobi-to-bitexpro': '转出到主站',
+        // 'bitexpro-to-oldhuobi': '从主站转入',
+        // 'otc-to-pro': '从OTC转入',
+        // 'pro-to-otc': '转出到OTC'
+    };
+     //状态
+    financeMap = {
+        'default': {
+            "已完成": 'valid,finished,confirmed,transfered,safe,orphan-safe,rollback-safe',
+            "已撤销": 'canceled,repealed',
+            "待审核": 'pre-submitted,reexamine',
+            "处理中": 'submitted,pass,pre-transfer',
+            "划转失败": 'invalid',
+            "审核失败": 'reject',
+            "确认中(确认次数: 0/0)": 'confirming,orphan-confirming,orphan-confirmed,rollback-confirming,rollback-confirmed',
+            "待确认(确认次数: 0/0)": 'orphan,rollback-orphan'
+        },
+        'deposit-virtual': {
+            'confirmed': "确认中(确认次数: 0/0)",
+            'unknown': "未知状态"
+        },
+        'withdraw-virtual': {
+            'invalid': "错误",
+            'submitted': "待审核",  //可以撤销
+            'reexamine': "进行复审",//可以撤销
+            'wallet-transfer': "已汇出",
+            'wallet-reject': "处理失败",
+            'confirm-error': "已汇出"
+        },
+        'bitexpro-to-bitex': {
+            'pre-submitted': "处理中"
+        },
+        'bitex-to-bitexpro': {
+            'pre-submitted': "处理中"
+        }
+    }
+    LANG = {
+        kline: {
+            "realtime": "分时"
+        },
+        pagination:{
+            "prev":"上一页",
+            "next":"下一页"
+        },
+        rightFixed:{
+            "online":"在线客服",
+            "msg":"消息早知道"
+        },
+        loading:{
+            loading:"请稍后..."
+        },
+        dialogTradePwd:{
+            dialogTitle:"委托确认",
+            dialogBtnCancel:"取消",
+            dialogBtnSubmit:"确定",
+            labelPrice:"委托价格",
+            labelAmount:"委托数量",
+            labelTotal:"委托总额",
+            labelPwd:"资金密码",
+            msgNullPwd:"请输入资金密码"
+        },
+        login : {
+            "验证" : "验证",
+            "拖动滑块验证" : "拖动滑块验证",
+            "验证通过" : "验证通过",
+        },
+        dialog:{
+            "资金划转" : "资金划转" ,
+            "提币" :  "提币",
+            "添加提币地址" : "添加提币地址",
+            "复制成功" : "复制成功",
+            "复制" : "复制",
+            "设置资金密码": "设置资金密码",
+            "实名认证":"实名认证",
+            "提现":"提现",
+            "充值":"充值",
+            "划转":"划转",
+            "注册并激活账户":"注册并激活账户",
+            "已完成":"已完成",
+            "认证":"认证",
+            "完善资料":"完善资料",
+            "完善":"完善",
+            "视频认证":"视频认证",
+            "设置":"设置",
+            "身份认证":"身份认证",
+            "重新认证":"重新认证",
+            "待审核":"待审核",
+            "审核未通过":"审核未通过",
+            "立即":"立即",
+            "提示":"提示",
+            "P_dia_go_huobi_withdraw_content":"<p>系统检测到您已完成火币主站身份认证，为保障您的资金安全，请到<a href='https://www.huobi.com/finance/index.php?a=cny_record' target='_blank'>火币主站-资产</a>进行提币操作。</p><p>提币前，您需要将当前币种从火币专业站账户划转至火币主站账户。</p><p>资金划转无需支付手续费，支持实时到账。</p><p>感谢您的支持与谅解！如有疑问，请 <a href='#' action='udesk' stop='1'>联系客服</a>。</p>",
+            "P_dia_jump_content":"<p>系统检测到您已完成火币主站身份认证，为保障您的资金安全，请到<a href='https://www.huobi.com/finance/index.php?a=cny_record' target='_blank'>火币主站-资产</a>进行充币操作。</p><p>充币后，您的数字资产将充值到火币主站账户。如需进行专业站交易，需要将所充值币种从火币主站账户划转至火币专业站账户。</p><p>资金划转无需支付手续费，支持实时到账。</p><p>感谢您的支持与谅解！如有疑问，请 <a href='#' action='udesk' stop='1'>联系客服</a>。</p>",
+            "P_dialog_wd_notice":"·请不要直接提币到ICO的众筹地址，这会导致您无法收取众筹到的数字资产。<br />·提币到合约地址可能会发生合约执行失败，将导致转账失败，资产将退回到火币。火币会人工处理退回到原账户，处理时间较长，请您谅解。<br />·网络转账费用是不固定的，取决于转账时合约执行需要消耗的算力。当前火币为提币支付的Gas Limit为90000，用于执行转账或合约执行。如果此次交易消耗超过90000 gas，将导致转账失败，资产将退回到火币。火币会人工处理退回到原账户，请您谅解。",
+            "安全提现地址（向该地址提现不进行短信验证、谷歌验证）":"安全提现地址（向该地址提现不进行短信验证、谷歌验证）",
+            "地址":"地址",
+            "名称":"名称",
+            "资金密码":"资金密码",
+            "点击获取":"点击获取",
+            "手机号":"手机号",
+            "谷歌验证码":"谷歌验证码",
+            "提币数量":"提币数量",
+            "手续费":"手续费",
+            "转账手续费":"转账手续费",
+            "短信验证码":"短信验证码",
+            "添加":"添加",
+            "提币地址":"提币地址",
+            "去主站交易":"去主站交易",
+            "从": "从",
+            "转至": "转至",
+            "全部划转": "全部划转",
+            "火币主站与火币专业站之间划转无需支付手续费，支持实时到账。": "火币主站与火币专业站之间划转无需支付手续费，支持实时到账。",
+            "数量": "数量",
+            "主站账户": "主站账户",
+            "专业站账户": "专业站账户",
+            "充币": "充币",
+            "账户地址": "账户地址",
+            "请您先完成如下操作": "请您先完成如下操作",
+            "立即完善":"立即完善",
+            "立即认证": "立即认证",
+            "立即设置": "立即设置",
+            "取消": "取消",
+            "确定": "确定",
+            "请先获取短信验证码": "请先获取短信验证码",
+            "请输入正确的手机号码": "请输入正确的手机号码",
+            "请输入图片验证码": "请输入图片验证码",
+            "请先填写资金密码": "请先填写资金密码",
+            "手续费用于网络确认，设置较高的手续费能够在一定程度上提升到账速度。": "手续费用于网络确认，设置较高的手续费能够在一定程度上提升到账速度。",
+            "推荐值: ": "推荐值: ",
+            "手续费范围: ": "手续费范围: ",
+            "约": "约",
+            "重新获取": "重新获取",
+            "提币地址没有填写": "提币地址没有填写",
+            "名称没有填写": "名称没有填写",
+            "撤单申请成功": "撤单申请成功",
+            "秒后重试": "秒后重试",
+            "删除安全地址": "删除安全地址",
+            "删除地址": "删除地址",
+            "确认删除？": "确认删除？",
+            "或者试试":"或者试试",
+            "语音验证码":"语音验证码",
+            "删除成功":"删除成功",
+            "请先输入数量": "请先输入数量",
+            "提币数量没有填写": "提币数量没有填写",
+            "转账手续费没有填写": "转账手续费没有填写",
+            "短信验证码没有填写": "短信验证码没有填写",
+            "提币申请成功": "提币申请成功",
+            "资金密码没有填写": "资金密码没有填写",
+            "资金划转成功":"资金划转成功",
+            "谷歌验证码没有填写": "谷歌验证码没有填写",
+            "分叉转币" : "分叉转币",
+            "可转换" : "可转换",
+            "点击切换" : "点击切换",
+            "转换数量": "转换数量",
+            "分叉币无需手续费，支持实时到账。" : "分叉币无需手续费，支持实时到账。",
+            "全部转换" : "全部转换",
+            "将消耗" : "将消耗",
+            "将生成" : "将生成",
+            "了解更多？" : "了解更多？",
+            "分叉转币成功" : "分叉转币成功",
+            "分叉币转换_title" : "分叉币转换",
+            "转换" : "转换",
+            "1 BT1 + 1 BT2 = 1 BTC，因此BT1、BT2可用余额中的较小值为最大可转换数额" : "1 BT1 + 1 BT2 = 1 BTC，因此BT1、BT2可用余额中的较小值为最大可转换数额",
+            "我已阅读并同意上述协议" : "我已阅读并同意上述协议",
+            "比特币Segwit2x分叉转币使用协议" : "比特币Segwit2x分叉转币使用协议",
+            "P_dialog_segwit2x_agreement" : "P_dialog_segwit2x_agreement",
+            "当前账号等级" : "当前账号等级",
+            "剩余额度" : "剩余额度",
+            "每日限额" : "每日限额",
+            "提升额度" : "提升额度",
+            "可用" : "可用",
+            "限额" : "限额",
+            "至少开启2项双重身份验证" : "至少开启2项双重身份验证",
+            "邮箱验证码" : "邮箱验证码",
+            "邮箱" : "邮箱",
+            "备注" : "备注",
+            "到账数量" : "到账数量",
+            "立即开启" : "立即开启",
+            "提币数量超出限额" : "提币数量超出限额",
+            "请先获取邮箱验证码" : "请先获取邮箱验证码",
+            "请输入邮箱验证码" : "请输入邮箱验证码",
+            "开启验证" : "开启验证",
+            "关闭验证" : "关闭验证",
+            "关闭手机验证后24小时内禁止提币。" : "关闭手机验证后24小时内禁止提币。",
+            "关闭邮箱验证后24小时内禁止提币。" : "关闭邮箱验证后24小时内禁止提币。",
+            "关闭谷歌验证器验证后24小时内禁止提币。" : "关闭谷歌验证器验证后24小时内禁止提币。",
+            "ROOT": "/zh-cn/",
+            "尊敬的用户您好：":"尊敬的用户您好：",
+            "欢迎您选择火币全球专业站（www.huobi.pro）（以下简称“专业站”）。为了您使用方便，您在火币网（www.huobi.com）的账户信息可以通过开通操作后在专业站使用，但前提是您必须同意下列条件，如您不同意下列任一条件，请您停止下一步操作并立即退出本页面：":"欢迎您选择火币全球专业站（www.huobi.pro）（以下简称“专业站”）。为了您使用方便，您在火币网（www.huobi.com）的账户信息可以通过开通操作后在专业站使用，但前提是您必须同意下列条件，如您不同意下列任一条件，请您停止下一步操作并立即退出本页面：",
+            "1. 同意火币全球专业站的《用户协议》（包括但不限于正文、《隐私条款》、《了解你的客户和反洗钱政策》等）的内容，请您务必仔细阅读并了解相关内容，详见链接":"1. 同意火币全球专业站的《用户协议》（包括但不限于正文、《隐私条款》、《了解你的客户和反洗钱政策》等）的内容，请您务必仔细阅读并了解相关内容，详见链接",
+            "2. 如您点击“开通”，即视为: 您已经仔细阅读并完全理解且同意了《用户协议》等内容，并同意受到《用户协议》的约束和管辖；且您已经授权专业站访问您在火币网的账户信息，包括但不限于注册信息、认证信息等。":"2. 如您点击“开通”，即视为: 您已经仔细阅读并完全理解且同意了《用户协议》等内容，并同意受到《用户协议》的约束和管辖；且您已经授权专业站访问您在火币网的账户信息，包括但不限于注册信息、认证信息等。",
+            "开通后表明您已同意以上授权说明及":"开通后表明您已同意以上授权说明及",
+            "《用户协议》":"《用户协议》",
+            "开通火币全球专业站":"开通火币全球专业站",
+            "安全验证": "安全验证",
+            "到":"到",
+            "交易账户":"交易账户",
+            "杠杆账户":"杠杆账户",
+            "转入本金":"转入本金",
+            "转出本金":"转出本金",
+            "可转":"可转",
+            "币种":"币种",
+            "杠杆账户的风险率高于200%部分的资金可转出":"杠杆账户的风险率高于200%部分的资金可转出",
+            "全部":"全部",
+            "应还数量":"应还数量",
+            "借贷数量":"借贷数量",
+            "利息":"利息",
+            "归还数量":"归还数量",
+            "归还借贷":"归还借贷",
+            "在通常情况下，瑞波币转账需要填写地址标签，漏填可能会造成资产损失。确定不需要地址标签吗？": "在通常情况下，瑞波币转账需要填写地址标签，漏填可能会造成资产损失。确定不需要地址标签吗？",
+            "杠杆交易协议":"杠杆交易协议",
+            "P_dialog_agreement_margin":'<p>1. 当您在本网站《杠杆交易协议》（以下简称“本协议”）处点击 “已阅读并同意”按钮时表明您已经完全接受本协议的全部条款。</p><p>2. 您在本网站进行杠杆交易完全是您本人根据自身经济情况并在了解面临的相关风险后进行的自愿交易行为，与本网站以及第三人无任何关系。</p><p>3. 您在本网站进行杠杆交易时，您可能会获得较高的投资收益，但同时也存在较大的投资风险。为了使您更好的了解其中的风险，根据有关法律法规、行政规章及相关国家政策，特向您对杠杆交易存在的风险进行提示，请您认真详细阅读。您在本网站进行杠杆交易存在的风险包括但不限于：</p><p>⑴ 数字资产本身的风险：数字资产市场是全新的、未经确认的，而且可能不会增长。目前，数字资产主要由投机者大量使用，零售和商业市场使用相对较少。因此，数字资产价格易产生波动，并进而对数字资产投资产生不利影响。数字资产市场没有像股市那样的涨跌停限制，同时交易是24小时开放的。数字资产由于筹码较少，价格易受到庄家控制以及全球政府政策的影响而大幅波动即有可能出现一天价格涨几倍的情况，同时也可能出现一天内价格跌去一半的情况。因此，因为数字资产本身的原因给您造成的经济损失全部由您自行承担。<br><br>⑵ 政策风险：因各国法律、法规和规范性文件的制定或者修改，数字资产交易随时可能被暂停、或被禁止。因国家法律、法规和规范性文件的制定或者修改，导致数字资产的交易被暂停、或者禁止的，因此造成的经济损失全部由您自行承担。<br><br>⑶ 互联网及技术风险：本网站不能保证本网站包含的全部信息、程序、文本等完全安全，不受任何病毒、木马等恶意程序的干扰和破坏，故您登陆、使用本网站任何服务或下载及使用该下载的任何程序、信息、数据等均是您个人的决定并自行承担风险及可能产生的损失。同时使用互联网形式的交易系统亦存有风险，包括但不限于软件，硬件和互联网链结的失败等。由于本网站不能控制互联网的可靠性和可用性，本网站不会对失真，延误和链结失败而承担任何责任。<br><br>⑷ 不可抗力风险：本网站对由于信息网络设备维护、信息网络连接故障、电脑、通讯或其他系统的故障、电力故障，遭遇黑客攻击、天气原因、意外事故、罢工、劳动争议、暴乱、起义、骚乱、生产力或生产资料不足、火灾、洪水、风暴、爆炸、战争、银行或其他合作方原因、数字资产市场崩溃、政府行为、司法或行政机关的命令、其他不在本网站可控范围内或本网站无能力控制的行为或第三方的原因而造成的不能服务或延迟服务，以及造成的您的损失，本网站不承担任何责任。<br><br>⑸ 行情风险。本网站不保证有关行情分析、市场评析等内容的正确性和适用性，对于您已经或将会从介绍人或其他任何机构及雇员处获得的资讯或建议，本网站不能控制，也不支持或担保其关于交易的准确性或完备性，由此导致的一切风险由您本人自行承担，与本网站无任何牵涉。<br><br>⑹ 被查封、冻结风险。当有权机关出示相应的调查文件要求本网站配合对您在本网站的账户进行调查时，或对您的账户采取查封、冻结或者划转措施时，本网站将按照有权机关的要求协助提供您的相应数据，或进行相应的操作，因此而造成的隐私泄露、账户不能操作及损失等，本网站不承担任何责任。<br><br>⑺ 其他风险：由于您丢失账户、忘记密码、操作不当，投资决策失误等原因导致您发生亏损；网上委托，他人进行恶意操作而造成的损失；委托他人代理您进行本网站的杠杆交易造成的损失；其他意外事件以及非因本网站原因造成的损失等；上述损失都将由您自行承担。<br><br>⑻ 特别提示：您参与本网站杠杆交易，应当自行控制风险，评估数字资产投资价值和投资风险，并承担损失全部投资的经济风险；您应当根据自身的经济条件和风险承受能力进行交易，并清醒地认识到数字资产投资存在的风险。您在进行数字资产杠杆投资时既存在盈利的可能，也存在亏损的风险。本协议风险提示并不能揭示数字资产杠杆交易的全部风险。请您务必对此有清醒的认识，市场有风险，投资需谨慎。</p><p>4. 杠杆交易存在很大风险，对服务器网关瓶颈，网站访问不稳定等各种因素造成杠杆交易被平仓的风险，本网站不负任何法律责任。</p><p>5. 当您在本网站的总资产不足申请额度的110%时，系统将按照本网站实时委托单价格对您的资产进行强制平仓买入或卖出以归还申请额度。如果价格波动剧烈，系统无法平仓，导致平台亏损，本网站有权向您追回损失。</p><p>6. 本网站目前支持的申请最大额度不能超过您个人净资产的4倍，也不能超过本网站系统设置的最大金额。</p><p>7. 本网站从您申请额度开始时间起计算手续费，24小时为一天，不足24小时按一天计算，超过24小时按照新的一天计算，每天收取的费用为您申请的额度乘以每日费率。</p><p>8. 为了保护资金安全，当您有申请额度未归还时，您在本网站可提现资产=总资产-2*杠杆额度（含手续费）。</p><p>9. 您每次申请借贷额度和归还都按笔处理，均优先向本网站支付杠杆交易手续费。</p><p>10. 本协议作为用户协议的组成部分，与用户协议具有同等法律效力。</p><p>11. 本协议未约定内容参照用户协议内容执行。</p>',
+            "操作成功":"操作成功",
+            "P_dialog_agreement_main":"<p>交易品种：经过市场充分验证和认可、全球流动性较好、风险较小的主流区块链资产。</p><p>计价方式：主区的交易品种，我们目前会使用USDT和BTC来计价。</p><p>风险提示：投资于主区区块链资产的投资者，需要了解火币专业站《用户协议》中提示的各类风险，充分认识到主区数字货币的投资风险，审慎作出投资决策，并自行承担由上述风险而带来的责任和损失。</p>",
+            "P_dialog_agreement_new":"<p>交易品种：创新性较好，有投资潜力但风险相对高的区块链资产。</p><p>计价方式：创新区的交易品种，我们会使用BTC和ETH来计价。</p><p>风险提示：与主区交易的区块链资产相比，除火币专业站《用户协议》中提示的各类风险外，创新交易区的交易品种诞生时间相对较短，市场认知程度相对较低，价格波动风险相对较大，技术成熟度有待时间验证，所以具有相对较高的风险性。投资于创新区区块链资产的投资者将面临比主区交易更大的风险，应充分学习并了解创新区交易的投资风险及火币专业站所披露的其他风险因素，并有一定的资产实力且有合理的投资资产分配计划。审慎作出投资决策，并自行承担由上述风险而带来的责任和损失。</p>",
+            "P_dialog_agreement_pro":"<p>交易品种：流动性适度，风险性较高且成长性较高的区块链资产。</p><p>计价方式：专业区的交易品种，我们会使用BTC和ETH来计价。</p><p>风险提示：与主区交易和创新区交易的区块链资产相比，除火币专业站《用户协议》中提示的各类风险外，专业区的交易品种诞生时间较短，市场认知程度较低，具有较高的风险性。但专业区的交易品种多有实际应用场景，一旦技术研发成熟并在特定场景中得到成功应用，将会有很大发展，所以专业区的交易品种成长性也较高。投资于专业区区块链资产的投资者将面临比主区交易和创新区交易更大的各类风险，投资者应是掌握完备的区块链资产方面知识、有成熟且长时间的区块链资产的投资经验，并有可以承受可能产生全部亏损风险相当的资产实力的专业性投资者，一般非专业性投资者不建议进行专业区内区块链资产投资，即使是专业投资者，也应充分学习并了解专业区交易的投资风险及火币专业站所披露的其他风险因素，审慎作出投资决策，切入盲目投资，并自行承担由上述风险而带来的责任和损失。</p>",
+            "P_dialog_agreement_fork":"<p>交易品种：主要针对分叉出来的、未经市场验证的交易品种，具有较高风险甚至可能价格归零的风险。</p> <p>计价方式：分叉区的交易品种，我们会使用分叉原链资产来计价。</p><p>风险提示：与主区交易的区块链资产相比，除火币专业站《用户协议》中提示的各类风险外，分叉区的交易品种的价格会随着原链资产的价格波动而波动，但不一定同频；此外，分叉币一般不具有特定的使用场景，如资产流动性逐渐降低，则有可能价值归零，风险很高。投资于分叉区的投资者应掌握丰富的区块链资产方面的知识、有较长时间区块链资产的投资经验，有自行做出投资决策的能力，并有可以承受可能产生全部亏损风险相当的资产实力且为自己设置了合理的投资资产分配计划。投资者应充分学习并了解分叉区交易的区块链资产的投资风险及火币专业站所披露的其他风险因素，合理评估自己的风险承担能力和资产情况，审慎作出投资决策，切入盲目投资，并自行承担由上述风险而带来的责任和损失。</p>",
+            "我已了解上述风险": "我已了解上述风险",
+            "请勾选用户协议":"请勾选用户协议",
+            "开通主区交易":"开通主区交易",
+            "开通创新区交易":"开通创新区交易",
+            "开通专业区交易":"开通专业区交易",
+            "开通分叉区交易":"开通分叉区交易",
+            "同意开通":"同意开通",
+            "我已了解并自愿承担上述风险":"我已了解并自愿承担上述风险",
+            "委托价":"委托价"
+        },
+        chart:{
+            "分时": "分时",
+            "分": "分",
+            "小时": "小时",
+            "日线": "日线",
+            "周线": "周线",
+            "月线": "月线",
+            "主图指标": "主图指标",
+            "副图指标": "副图指标",
+            "委托价":"委托价"
+        },
+        exchange:{
+            "委托成功":"委托成功"
+        },
+        jsTexts:{
+            "请先获取短信验证码": "请先获取短信验证码",
+            "请先获取邮箱验证码": "请先获取邮箱验证码",
+            "保存成功":"保存成功",
+            "开启验证成功":"开启验证成功",
+            "关闭验证成功":"关闭验证成功",
+            "绑定成功":"绑定成功"
+        },
+        msg:{
+            "登录失败":"登录失败",
+            "成功":"成功"
+        },
+        component:{
+            "请选择":"请选择",
+            "常用":"常用",
+            "全部":"全部",
+            "请选择国籍":"请选择国籍",
+            "请选择区号":"请选择区号",
+            "输入错误":"输入错误",
+            "8-20位":"8-20位",
+            "不能为纯数字":"不能为纯数字",
+            "弱":"弱",
+            "中":"中",
+            "强":"强",
+            "全部":"全部",
+            "币种":"币种",
+            "类型":"类型",
+            "申请借贷":"申请借贷",
+            "归还借贷":"归还借贷",
+            "归还利息":"归还利息",
+            "杠杆账户":"杠杆账户",
+            "从交易账户转入":"从交易账户转入",
+            "转出到交易账户":"转出到交易账户"
+        }
+    }
+    localStorage.removeItem("currency_info");
+    localStorage.removeItem("symbols_list");
+
+    function setCookies(value) {
+        var str = value.name + '=' + encodeURIComponent(value.value);
+        if (value.domain) { str += '; domain=' + value.domain; }
+        if (value.path) { str += '; path=' + value.path; }
+        if (value.time) {
+            var time = new Date();
+            time.setTime(time.getTime() + value.time * 1000);
+            str += '; expires=' + time.toGMTString();
+        }
+        document.cookie = str;
+        return;
+    }
+    function GetHost() {
+        var hosts = location.hostname;
+        if (/(\d*\.){3}\d*/.test(hosts)) {
+            hosts = hosts.split(":");
+            hosts = hosts[0];
+        } else {
+            hosts = hosts.split(".");
+            hosts.reverse();
+            hosts = hosts.slice(0,2);
+            //hosts.length = 2;
+            hosts.reverse();
+            hosts = hosts.join(".");
+        }
+        return hosts;
+    }
+    var act = $_GET("action");
+        backurl =  $_GET("backurl");
+    if(act && backurl){
+        setCookies({
+            name: "OTC_ACTION_" + act,
+            value: backurl,
+            domain: GetHost(),
+            path: "/"
+        });
+    }
+
+
+    !function(){
+        var pInviterId = $_GET('inviter_id'),
+            cInviterId = getCookie('HBP_TIVNI'),
+            domain = {
+                'huobi.pro':'11116460',
+                'huobipro.com':'11116470'
+            },
+            host = GetHost();
+
+        if(cInviterId){
+            return
+        }
+        if (pInviterId) {
+            setCookies({
+                name: "HBP_TIVNI",
+                value: $_GET('inviter_id'),
+                domain: GetHost(),
+                path: "/"
+            });
+        }else{
+            domain[host] && setCookies({
+                name: "HBP_TIVNI",
+                value: domain[host],
+                domain: GetHost(),
+                path: "/"
+            });
+        }
+    }()</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PB5LRHQ');</script><!-- End Google Tag Manager --><!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '143500479619124');
+    fbq('track', 'PageView');</script><noscript>&lt;img height="1" width="1" src="https://www.facebook.com/tr?id=143500479619124&amp;ev=PageView&amp;noscript=1"&gt;</noscript><!-- End Facebook Pixel Code --><!-- Twitter universal website tag code --><script>!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js', a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','nyigf');
+    twq('track','PageView');</script><!-- End Twitter universal website tag code --><script>var PAGE_SYMBOL_ARR = getPageSymbol() || [];
+        var TRADE_TYPE = PAGE_SYMBOL_ARR[2] && PAGE_SYMBOL_ARR[2].toLowerCase();
+        var PAGE_NAME = TRADE_TYPE;</script><link href="/assets/styles/exchange_6270a1fd.css" rel="stylesheet"><script type="text/javascript" src="/commons.3f669aa9392e9db5ac59.js"></script><script type="text/javascript" src="/assets/scripts/exchange_76212360.js"></script></head><body class="user_not_login"><script>if(getCookie('HB-PRO-TOKEN')){
+        document.body.className = 'user_is_login'
+    }else{
+        document.body.className = 'user_not_login'
+    }
+    
+    var market_category_title = {
+        "main" : "主区",
+        "innovation" : "创新区",
+        "bifurcation" : "分叉区",
+    }</script><div class="main_doc"><div class="doc_head"><h1 class="head_logo"><a href="/zh-cn/"><img src="/assets/fonts/logo.svg" alt="火币专业交易站"></a></h1><ul class="head_nav" id="head_nav">  <li>               <a id="go-otc" href="https://otc.huobipro.com/#/trade/list?coin=1&amp;type=1" target="_blank">法币交易</a>           </li>  <li class="cur"><a href="/zh-cn/coin_coin/exchange/">币币交易</a></li>           <li class=""><a href="/zh-cn/coin_coin/margin/">杠杆交易</a></li>           <li><a target="_blank" href="/labs/">LABS</a></li>  <li class=""><a href="/zh-cn/help/#348">新手帮助</a></li>  <li class="head-padding"></li>  <li class="login_hide"><a href="/zh-cn/login/" data-action="go_login">登录</a></li>             <li class="split"></li>             <li class="login_hide"><a href="/zh-cn/register/" data-action="go_register">注册</a></li>  <li class="split"></li>           <li class="mobile_show_item theme_btn">               <button class="change_theme"><i class="hb_icon_day"></i></button>           </li>           <li class="mobile_show_item lang_btn">             <dl class="select_lang">               <dt>简体中文</dt>               <dd>  <a href="javascript:void(0);" data-lang="en-us">English</a>  <a href="javascript:void(0);" data-lang="zh-cn">简体中文</a>  <a href="javascript:void(0);" data-lang="zh-hk">繁體中文</a>  <a href="javascript:void(0);" data-lang="ko-kr"></a>  <a href="javascript:void(0);" data-lang="ja-jp">日本語</a>  <a href="javascript:void(0);" data-lang="ru-ru">Русский</a>  <a href="javascript:void(0);" data-lang="de-de">Deutsch</a>  <a href="javascript:void(0);" data-lang="fr-fr">Franais</a>  <a href="javascript:void(0);" data-lang="es-es">Espaol</a>  </dd>             </dl>           </li></ul><div class="otc_info_box" id="otcGuide" style="display: block;"><span class="otc_info_close remove-guide"><i class="hb_icon_close remove-guide"></i></span><p class="info_title">使用法币买卖币</p><p class="info_desc">方便 · 快捷 · 安全</p><div class="info_other"><a target="_blank" href="https://otc.huobipro.com/#/trade/list?coin=1&amp;type=1"><img src="/assets/fonts/otc-guide-wechat.svg" alt=""></a><a target="_blank" href="https://otc.huobipro.com/#/trade/list?coin=1&amp;type=1"><img src="/assets/fonts/otc-guide-alipay.svg" alt=""></a><a target="_blank" href="https://otc.huobipro.com/#/trade/list?coin=1&amp;type=1"><img src="/assets/fonts/otc-guide-bank.svg" alt=""></a></div></div></div><div class="l_notice_top" id="notice_top"><span><i class="hb_icon_notice"></i>公告： </span><span id="notice_top_box"><script type="text/x-template" id="notice_tmp"> <%
+                var _data = __data;
+                if(_data.link){
+                %> <a href="/zh-cn/notice">&nbsp;</a> <%
+                }
+                else{
+                %> <a href="/zh-cn/notice_detail/?id=<%= _data.topId %>"> <%= _data.topTitle %> </a> <%
+                }
+                %> </script></span><i data-close="close" class="hb_icon_close"></i></div><div class="doc_container row"><div class="sidebar"><div class="desktop" style="display:none" id="total_balance"><dl><dt>净资产折合:</dt><dd><b class="font_arial">---</b><i class="upper">btc</i><span class="font_arial" style="opacity:.5"></span></dd></dl></div><div class="desktop not_login" style="" id="total_balance_to_login"><a class="logout" href="javascript:void(0)" data-action="go_login">登录</a> 或 <a class="logout" href="javascript:void(0)" data-action="go_register">注册</a> 开始交易</div><div class="drawer" id="drawer"><strong>市场</strong><div class="search_wrap"><input type="text" id="search_keyword" class="uppercase" pro_name="search" value="" maxlength="7"><i style="display: none;" class="search_clear hb_icon_clear" action="clear_key"></i><i class="hb_icon_search" flag="search_sign"></i></div><div class="switch_wrap uppercase" action="switch_quote"><i class="hb_icon_split_coin"></i><b>CNY</b></div><div class="coin_filter"><span action="userfilter" data-filter-key="usdt" class="cur">usdt</span> <span action="userfilter" data-filter-key="btc" class="">btc</span> <span action="userfilter" data-filter-key="eth" class="">eth</span> <b action="showmarked" class=""><i class="hb_icon_marked"></i><!-- 自选 --></b></div><div class="coin_table"><dl class="coin_thead"><dt></dt><dd><div class="coin_unit"><div><span action="usersort" data-sort-key="coin">币种<i class=""><b class="hb_icon_sort_asc"></b><b class="hb_icon_sort_desc"></b></i></span> <span action="usersort" id="" data-sort-key="price"><em id="new_price" data-text="最新价">最新价</em><i class=""><b class="hb_icon_sort_asc"></b><b class="hb_icon_sort_desc"></b></i></span> <span action="usersort" data-sort-key="rate">涨幅<i class=""><b class="hb_icon_sort_asc"></b><b class="hb_icon_sort_desc"></b></i></span></div></div></dd></dl><div class="coin_list">  <div class="market_cate_wrap">         <div class="market_category" data-partition="main">             主区<i><a target="_blank" href="/zh-cn/page/symbolpartition/#main">分区介绍</a></i>         </div>         <p class="market_line"></p>     </div>  <dl action="gourl" data-symbol="btcusdt" data-symbol-path="btc_usdt" class="cur">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="btcusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#btc">了解更多</a></p>             </div>btc</em></span>             <span price="price">13222.35</span>             <span rate="rate" class="color-buy">+0.09%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="bchusdt" data-symbol-path="bch_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="bchusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#bch">了解更多</a></p>             </div>bch</em></span>             <span price="price">2321.48</span>             <span rate="rate" class="color-buy">+0.42%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="xrpusdt" data-symbol-path="xrp_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="xrpusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#xrp">了解更多</a></p>             </div>xrp</em></span>             <span price="price">1.9700</span>             <span rate="rate" class="color-buy">+3.99%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="ethusdt" data-symbol-path="eth_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="ethusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#eth">了解更多</a></p>             </div>eth</em></span>             <span price="price">842.78</span>             <span rate="rate" class="color-buy">+12.71%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="ltcusdt" data-symbol-path="ltc_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="ltcusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#ltc">了解更多</a></p>             </div>ltc</em></span>             <span price="price">237.20</span>             <span rate="rate" class="color-buy">+6.29%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="dashusdt" data-symbol-path="dash_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="dashusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#dash">了解更多</a></p>             </div>dash</em></span>             <span price="price">1068.10</span>             <span rate="rate" class="color-buy">+7.23%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="eosusdt" data-symbol-path="eos_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="eosusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#eos">了解更多</a></p>             </div>eos</em></span>             <span price="price">8.16</span>             <span rate="rate" class="color-buy">+5.97%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="etcusdt" data-symbol-path="etc_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="etcusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#etc">了解更多</a></p>             </div>etc</em></span>             <span price="price">29.84</span>             <span rate="rate" class="color-buy">+2.01%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="omgusdt" data-symbol-path="omg_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="omgusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#omg">了解更多</a></p>             </div>omg</em></span>             <span price="price">19.69</span>             <span rate="rate" class="color-buy">+4.73%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="zecusdt" data-symbol-path="zec_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="zecusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#zec">了解更多</a></p>             </div>zec</em></span>             <span price="price">536.63</span>             <span rate="rate" class="color-buy">+7.70%</span>         </div></div></dd>     </dl>  <div class="market_cate_wrap">         <div class="market_category" data-partition="innovation">             创新区<i><a target="_blank" href="/zh-cn/page/symbolpartition/#innovation">分区介绍</a></i>         </div>         <p class="market_line"></p>     </div>  <dl action="gourl" data-symbol="qtumusdt" data-symbol-path="qtum_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="qtumusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#qtum">了解更多</a></p>             </div>qtum</em></span>             <span price="price">51.43</span>             <span rate="rate" class="color-buy">+0.29%</span>         </div></div></dd>     </dl>  <dl action="gourl" data-symbol="hsrusdt" data-symbol-path="hsr_usdt">         <dt></dt>         <dd><div class="coin_unit"><div>             <span><i class="hb_icon_unmarked" stop="1" action="mark" data-marked="0" data-symbol="hsrusdt"></i><em class="base_currency"><div class="currency_tips" style="display:none" stop_prop="stop_prop" action="stop_prop">                 <strong></strong>                 <p></p>                 <p class="gomore"><a target="_blank" href="/zh-cn/assetintro/#hsr">了解更多</a></p>             </div>hsr</em></span>             <span price="price">25.55</span>             <span rate="rate" class="color-buy">+2.15%</span>         </div></div></dd>     </dl>  </div></div></div></div><div class="page_content"><div class="mod trading_chart"><div class="mod_hd"><span class="mod_show_btn"><button><i></i></button></span><dl class="ticker_wrap" id="ticker_wrap">  <dt>BTC/USDT<span class="ticker_close">13222.35</span></dt>                                                         <dd><span id="tickerCny_ticker_bar" class="">≈ 85920.48 CNY</span></dd>                                                         <dd>涨幅 <span name="rate" class="color_up">+0.09%</span></dd>                                                         <dd>高 <span name="high">13800.00</span></dd>                                                         <dd>低 <span name="low">12749.87</span></dd>                                                         <dd>24H量 <span name="amount">6974 BTC</span></dd>                                                         <dd class="ticker_logo"><img src="/assets/fonts/logo.svg" alt="火币专业交易站"></dd></dl></div><div id="huobi-chart"><iframe id="tradingview_9c81b" name="tradingview_9c81b" src="/charting_library/static/tv-chart.18168320bd5edaac1e75.html#localserver=1&amp;symbol=BTC%2FUSDT&amp;interval=15&amp;toolbarbg=transparent&amp;widgetbar=%7B%22datawindow%22%3Afalse%2C%22details%22%3Afalse%2C%22watchlist%22%3Afalse%2C%22watchlist_settings%22%3A%7B%22default_symbols%22%3A%5B%5D%7D%7D&amp;drawingsAccess=%7B%22type%22%3A%22black%22%2C%22tools%22%3A%5B%7B%22name%22%3A%22Regression%20Trend%22%7D%5D%7D&amp;timeFrames=%5B%7B%22text%22%3A%225y%22%2C%22resolution%22%3A%22W%22%7D%2C%7B%22text%22%3A%221y%22%2C%22resolution%22%3A%22W%22%7D%2C%7B%22text%22%3A%226m%22%2C%22resolution%22%3A%22120%22%7D%2C%7B%22text%22%3A%223m%22%2C%22resolution%22%3A%2260%22%7D%2C%7B%22text%22%3A%221m%22%2C%22resolution%22%3A%2230%22%7D%2C%7B%22text%22%3A%225d%22%2C%22resolution%22%3A%225%22%7D%2C%7B%22text%22%3A%221d%22%2C%22resolution%22%3A%221%22%7D%5D&amp;locale=zh&amp;uid=tradingview_9c81b&amp;clientId=0&amp;userId=0&amp;chartsStorageVer=1.0&amp;customCSS=night.css&amp;debug=false&amp;timezone=Asia%2FShanghai" width="100%" height="480" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="" style="display:block;"></iframe></div><div class="chartMask" id="chartMask" action="activeChart"></div></div><!--杠杆、资产--><div class="margin_account" id="margin_account"><div class="margin_tit"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em>/<em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em><em class="uppercase"></em> 杠杆账户<p><a href="" stop="1" action="locationgo" data-path="/zh-cn/margin/margin_center/">杠杆管理</a></p></div><div class="margin_in"><ul><li>可用<em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em><br><span>---</span> <a stop="1" action="marginTransfer" lazyfill="attr" data-template="&lt;%=quote%&gt;" data-attr="data-currency" data-currency="usdt">转入</a></li><li>可用<em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em><br><span>---</span> <a stop="1" action="marginTransfer" lazyfill="attr" data-template="&lt;%=base%&gt;" data-attr="data-currency" data-currency="btc">转入</a></li><li>爆仓价(<em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em>)<br><span data-text="---">---</span></li></ul><div class="margin_risk"><p class="tit">风险率 <i class="hb_icon_tip"><em>总资产/借贷资产*100%</em></i></p><div class="risk_percentage"><em>110%</em><div class="bg"><b class="fire_text">爆仓中</b><p class="percent" style="width: 0%"><i class="risk_val" data-text="无风险"></i> <s></s></p></div><em>200%</em></div></div></div></div><!--买卖盘--><div class="trade_wrap"><!-- unlogin trade_panel --><div class="trade_panel trade_panel_logout"><div class="mod mod_trade" id="mod_trade_logout"><div class="mod_hd clear_fix"><ul class="mod_tab"><li class="cur">限价交易</li><li>市价交易</li></ul><div class="fees_rule"><p><a href="/about/fee" target="_blank">费率</a></p></div></div><div class="mod_bd clear_fix"><div class="panel"><div class="hd"><a class="logout" href="/zh-cn/login/">登录</a> 或 <a class="logout" href="/zh-cn/register/">注册</a> 开始交易</div><div class="bd"><div><div class="input_text"><b class="label">买入价</b><label><input type="text" disabled="disabled"> <span class="upper unit" unit="show_buy_quote_logout">usdt</span></label><strong class="msg"></strong><!--<p class="math_price"></p>--></div><div class="input_text input_text_amount"><b class="label">买入量</b><label><input type="text" disabled="disabled"> <span class="unit u"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range limit_buy_logout buy_color"></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="total"><p>交易额 <span></span></p><p class="transform_total"></p></div><div class="submit"><button disabled="disabled" class="btn_buy color_buy_bg">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></div></div></div><div class="panel sell_panel"><div class="hd"><a class="logout" href="/zh-cn/login/">登录</a> 或 <a class="logout" href="/zh-cn/register/">注册</a> 开始交易</div><div class="bd"><div><div class="input_text"><b class="label">卖出价</b><label><input type="text" disabled="disabled"> <span class="upper unit" unit="show_sell_quote_logout">usdt</span></label><strong class="msg"></strong><!--<p class="math_price"></p>--></div><div class="input_text input_text_amount"><b class="label">卖出量</b><label><input type="text" disabled="disabled"> <span class="unit"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range limit_sell_logout sell_color"></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="total"><p>交易额 <span></span></p><p class="transform_total"></p></div><div class="submit"><button disabled="disabled" class="btn_sell color_sell_bg">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></div></div></div></div><div class="mod_bd clear_fix" style="display: none"><div class="panel"><div class="hd"><a class="logout">登录</a> 或 <a class="logout">注册</a> 开始交易</div><!--<div class="market_price">--><!--以市场上最优价格买入--><!--<span class="huobi_pro_info">--><!--<i class="com_tip">--><!--当使用市价买入时，系统会根据您预留的金额在市场上从低到高进行扫单，直至金额用完为止。--><!--</i>--><!--</span>--><!--</div>--><div class="bd"><div><div class="input_text"><b class="label">买入价</b><label><input type="text" disabled="disabled" placeholder="以市场上最优价格买入"> <span class="upper unit" unit="show_buy_quote_logout">usdt</span></label><strong class="msg"></strong><!--<p class="math_price"></p>--></div><div class="input_text input_text_amount"><b class="label">交易额</b><label><input type="text" disabled="disabled"> <span class="unit uppercase" lazyfill="&lt;%=quote%&gt;">usdt</span></label><strong class="msg"></strong><!--<p class="math_price"></p>--></div><div class="input_range market_buy_logout buy_color"></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=quote%&gt;" data-template=" &lt;%=quote%&gt;"> usdt</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=quote%&gt;" data-template=" &lt;%=quote%&gt;"> usdt</em></span></div><div class="total"><p>交易额 <span></span></p><p class="transform_total"></p></div><div class="submit"><button class="btn_buy color_buy_bg" disabled="disabled">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></div></div></div><div class="panel sell_panel"><div class="hd"><a class="logout">登录</a> 或 <a class="logout">注册</a> 开始交易</div><!--<div class="market_price">--><!--以市场上最优价格卖出--><!--<span class="huobi_pro_info">--><!--<i class="com_tip">--><!--当使用市价卖出时，系统会根据您预留的数量在市场上从高到低进行扫单，直至数量卖完为止。--><!--</i>--><!--</span>--><!--</div>--><div class="bd"><div><div class="input_text"><b class="label">卖出价</b><label><input type="text" disabled="disabled" placeholder="以市场上最优价格卖出"> <span class="upper unit" unit="show_sell_quote_logout">usdt</span></label><strong class="msg"></strong><!--<p class="math_price"></p>--></div><div class="input_text input_text_amount"><b class="label">卖出量</b><label><input type="text" disabled="disabled"> <span class="unit"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range market_sell_logout sell_color"></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="total"><p>交易额 <span></span></p><p class="transform_total"></p></div><div class="submit"><button class="btn_sell color_sell_bg" disabled="disabled">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></div></div></div></div></div></div><!-- end unlogin trade_panel --><div class="trade_panel trade_panel_login"><div class="mod_trade" id="mod_trade"><div class="mod_hd clear_fix"><ul class="mod_tab"><li class="cur">限价交易</li><li>市价交易</li></ul><div class="fees_rule"><p><a href="/about/fee" target="_blank">费率</a></p></div></div><div class="mod_bd clear_fix"><div class="panel"><div class="hd hd_login" id="margin_hb_quote"><span>可用</span> <b class="buy_available">---</b> <em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em> <a class="deposit_btn" style="" id="deposit_limit_quote" action="deposit" data-path="/zh-cn/finance/" lazyfill="attr" data-attr="data-coin" data-template="&lt;%=quote%&gt;" data-coin="usdt">充币</a></div><div class="hd hd_logout"><a data-action="go_login" class="logout" href="javascript:void(0)">登录</a> 或 <a class="logout" href="javascript:void(0)" data-action="go_register">注册</a> 开始交易</div><div class="bd"><form method="post" onsubmit="return false;" action="" id="form_buy_limit"><input type="hidden" name="symbol" value="btcusdt" lazyfill="attr" data-attr="value" data-template="&lt;%=base+quote%&gt;"> <input type="hidden" name="source" value="web"> <input type="hidden" name="type" value="buy-limit"><div class="input_text"><b class="label">买入价</b><label><input autocomplete="off" type="text" name="price" data-datatype="*" data-msg-null="请输入买入价" data-msg-error="买入价格不能高于现价的%s|买入价格不能低于%s" maxlength="14"> <span class="upper unit" unit="show_buy_quote">usdt</span></label><strong class="msg"></strong><p class="math_price"><em style="" id="buy_limit_math_price">≈ 85976.69 CNY</em></p></div><div class="input_text input_text_amount"><b class="label">买入量</b><label><input autocomplete="off" type="text" name="amount" data-datatype="*" data-msg-null="请输入买入量" data-msg-error="买入数量不能高于%s|买入数量不能低于%s" maxlength="14"> <span class="unit u"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range buy_color login_limit_buy"><div class="range" tabindex="0">
+    <div class="progress" style="width: 0%;"></div>
+    <div class="path"></div>
+<i class="point cur" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i><i class="drag_bar" style="left: 0px;"></i><i class="drag_track"></i></div></div><div class="input_range buy_color logout_limit_buy"><div class="range" tabindex="0">
+    <div class="progress"></div>
+    <div class="path"></div>
+<i class="point" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i></div></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="total" id="buy_total"><p>交易额 <span>0.00000000 USDT</span></p><p class="transform_total"></p></div><div class="submit"><button class="btn_buy color_buy_bg login_button" type="submit">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button> <button disabled="disabled" class="btn_buy color_buy_bg logout_button">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></form></div></div><div class="panel sell_panel"><div class="hd hd_login" id="margin_hb_base"><span>可用</span> <b class="sell_available">---</b> <em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em> <a class="deposit_btn" style="" id="deposit_limit_coin" action="deposit" data-path="/zh-cn/finance/" lazyfill="attr" data-attr="data-coin" data-template="&lt;%=base%&gt;" data-coin="btc">充币</a></div><div class="hd hd_logout"><a class="logout" href="javascript:void(0)" data-action="go_login">登录</a> 或 <a class="logout" href="javascript:void(0)" data-action="go_register">注册</a> 开始交易</div><div class="bd"><form method="post" onsubmit="return false;" id="form_sell_limit"><input type="hidden" name="symbol" lazyfill="attr" data-attr="value" data-template="&lt;%=base+quote%&gt;" value="btcusdt"> <input type="hidden" name="source" value="web"> <input type="hidden" name="type" value="sell-limit"><div class="input_text"><b class="label">卖出价</b><label><input autocomplete="off" type="text" name="price" data-datatype="*" data-msg-null="请输入卖出价" data-msg-error="卖出价格不能高于%s|卖出价格不能低于现价的%s" maxlength="14"> <span class="upper unit" unit="show_sell_quote">usdt</span></label><strong class="msg"></strong><p class="math_price"><em style="" id="sell_limit_math_price">≈ 85921.58 CNY</em></p></div><div class="input_text input_text_amount"><b class="label">卖出量</b><label><input autocomplete="off" type="text" name="amount" data-datatype="*" data-msg-null="请输入卖出量" data-msg-error="卖出数量不能高于%s|卖出数量不能低于%s" maxlength="14"> <span class="unit"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range sell_color login_limit_sell"><div class="range" tabindex="0">
+    <div class="progress" style="width: 0%;"></div>
+    <div class="path"></div>
+<i class="point cur" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i><i class="drag_bar" style="left: 0px;"></i><i class="drag_track"></i></div></div><div class="input_range sell_color logout_limit_sell"><div class="range" tabindex="0">
+    <div class="progress"></div>
+    <div class="path"></div>
+<i class="point" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i></div></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="total" id="sell_total"><p>交易额 <span>0.00000000 USDT</span></p><p class="transform_total"></p></div><div class="submit"><button class="btn_sell color_sell_bg login_button" type="submit">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button> <button disabled="disabled" class="btn_sell color_sell_bg logout_button">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></form></div></div></div><div class="mod_bd clear_fix" style="display: none"><div class="panel"><div class="hd hd_login" id="margin_hb_quote1"><span>可用</span> <b class="buy_available">---</b> <em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em> <a class="deposit_btn" style="" id="deposit_market_quote" action="deposit" data-path="/zh-cn/finance/" lazyfill="attr" data-attr="data-coin" data-template="&lt;%=quote%&gt;" data-coin="usdt">充币</a></div><div class="hd hd_logout"><a class="logout" href="javascript:void(0)" data-action="go_login">登录</a> 或 <a class="logout" href="javascript:void(0)" data-action="go_register">注册</a> 开始交易</div><!--<div class="market_price">--><!--<span class="huobi_pro_info">--><!--<i class="com_tip">--><!--当使用市价买入时，系统会根据您预留的金额在市场上从低到高进行扫单，直至金额用完为止。--><!--</i>--><!--</span>--><!--</div>--><div class="bd"><form method="post" onsubmit="return false;" id="form_buy_market"><input type="hidden" name="symbol" lazyfill="attr" data-attr="value" data-template="&lt;%=base+quote%&gt;" value="btcusdt"> <input type="hidden" name="source" value="web"> <input type="hidden" name="type" value="buy-market"><div class="input_text"><b class="label">买入价</b><label><input type="text" disabled="disabled" placeholder="以市场上最优价格买入"> <span class="upper unit" unit="show_buy_quote">usdt</span></label><p class="math_price"></p></div><div class="input_text input_text_amount"><b class="label">交易额</b><label><input data-precision="volumes" autocomplete="off" type="text" name="amount" data-datatype="*" data-msg-null="请输入交易额" data-msg-error="交易额不能高于%s|交易额不能低于%s" maxlength="14"> <span class="unit uppercase" lazyfill="&lt;%=quote%&gt;">usdt</span></label><strong class="msg"></strong></div><div class="input_range buy_color login_market_buy"><div class="range" tabindex="0">
+    <div class="progress" style="width: 0%;"></div>
+    <div class="path"></div>
+<i class="point cur" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i><i class="drag_bar" style="left: 0px;"></i><i class="drag_track"></i></div></div><div class="input_range buy_color logout_market_buy"><div class="range" tabindex="0">
+    <div class="progress"></div>
+    <div class="path"></div>
+<i class="point" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i></div></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=quote%&gt;" data-template=" &lt;%=quote%&gt;"> usdt</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=quote%&gt;" data-template=" &lt;%=quote%&gt;"> usdt</em></span></div><div class="submit"><button class="btn_buy color_buy_bg login_button" type="submit">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button> <button disabled="disabled" class="btn_buy color_buy_bg logout_button">买入<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做多)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></form></div></div><div class="panel sell_panel"><div class="hd hd_login" id="margin_hb_base1"><span>可用</span> <b class="sell_available">---</b> <em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em> <a class="deposit_btn" style="" id="deposit_market_coin" action="deposit" data-path="/zh-cn/finance/" lazyfill="attr" data-attr="data-coin" data-template="&lt;%=base%&gt;" data-coin="btc">充币</a></div><div class="hd hd_logout"><a class="logout" href="javascript:void(0)" data-action="go_login">登录</a> 或 <a class="logout" href="javascript:void(0)" data-action="go_register">注册</a> 开始交易</div><!--<div class="market_price">--><!--<span class="huobi_pro_info">--><!--<i class="com_tip">--><!--当使用市价卖出时，系统会根据您预留的数量在市场上从高到低进行扫单，直至数量卖完为止。--><!--</i>--><!--</span>--><!--</div>--><div class="bd"><form method="post" onsubmit="return false;" action="" id="form_sell_market"><input type="hidden" name="symbol" lazyfill="attr" data-attr="value" data-template="&lt;%=base+quote%&gt;" value="btcusdt"> <input type="hidden" name="source" value="web"> <input type="hidden" name="type" value="sell-market"><div class="input_text"><b class="label">卖出价</b><label><input type="text" disabled="disabled" placeholder="以市场上最优价格卖出"> <span class="upper unit" unit="show_sell_quote">usdt</span></label><p class="math_price"></p></div><div class="input_text input_text_amount"><b class="label">卖出量</b><label><input autocomplete="off" type="text" name="amount" data-datatype="*" data-msg-null="请输入卖出量" data-msg-error="最大可卖出量为%s|卖出量不能低于%s" maxlength="14"> <span class="unit"><em class="uppercase" lazyfill="&lt;%=base%&gt;">btc</em></span></label><strong class="msg"></strong></div><div class="input_range sell_color login_market_sell"><div class="range" tabindex="0">
+    <div class="progress" style="width: 0%;"></div>
+    <div class="path"></div>
+<i class="point cur" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i><i class="drag_bar" style="left: 0px;"></i><i class="drag_track"></i></div></div><div class="input_range sell_color logout_market_sell"><div class="range" tabindex="0">
+    <div class="progress"></div>
+    <div class="path"></div>
+<i class="point" data-point="0" style="left: 0%;"></i><i class="point" data-point="25" style="left: 25%;"></i><i class="point" data-point="50" style="left: 50%;"></i><i class="point" data-point="75" style="left: 75%;"></i><i class="point" data-point="100" style="right: 0px;"></i></div></div><div class="amount_range uppercase"><span class="min"><span class="min_num">0</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span> <span class="max"><span class="max_num">0.0000</span><em lazyfill="&lt;%=base%&gt;" data-template=" &lt;%=base%&gt;"> btc</em></span></div><div class="submit"><button class="btn_sell color_sell_bg login_button" type="submit">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button> <button disabled="disabled" class="btn_sell color_sell_bg logout_button">卖出<em class="uppercase" lazyfill="&lt;%=TRADE_TYPE === 'margin' ? '(做空)' : ''%&gt;&lt;%=base%&gt;">btc</em></button></div></form></div></div></div></div></div><div class="order_book table-container"><div class="head"><p class="title">最新价 <span id="tickerClose">13222.35</span> <em class="uppercase" lazyfill="&lt;%=quote%&gt;">usdt</em> <span id="tickerCny" class="ticker-transform">≈ 85920.48 CNY</span></p></div><div class="ex-depth"><div id="market_depth"><dl>  <dt class="header">                                         <span class="title"></span>                                         <span class="price">价格(USDT)</span>                                         <span class="amount">数量<em class="uppercase">(btc)</em></span>                                         <span>累计<em class="uppercase">(btc)</em></span>                                     </dt>  <dd data-info="13247.64">                                         <div class="inner">                                             <span class="title color-sell">卖 7</span>                                             <span class="price">13247.64</span>                                             <span class="amount">0.4362</span>                                             <span>2.3688</span>                                             <b class="color-sell-bg" style="width: 45.91578947368421%"></b>                                         </div>                                     </dd>  <dd data-info="13245.61">                                         <div class="inner">                                             <span class="title color-sell">卖 6</span>                                             <span class="price">13245.61</span>                                             <span class="amount">0.2520</span>                                             <span>1.9326</span>                                             <b class="color-sell-bg" style="width: 26.526315789473685%"></b>                                         </div>                                     </dd>  <dd data-info="13245.60">                                         <div class="inner">                                             <span class="title color-sell">卖 5</span>                                             <span class="price">13245.60</span>                                             <span class="amount">0.0756</span>                                             <span>1.6806</span>                                             <b class="color-sell-bg" style="width: 7.957894736842105%"></b>                                         </div>                                     </dd>  <dd data-info="13245.56">                                         <div class="inner">                                             <span class="title color-sell">卖 4</span>                                             <span class="price">13245.56</span>                                             <span class="amount">0.2192</span>                                             <span>1.6050</span>                                             <b class="color-sell-bg" style="width: 23.07368421052632%"></b>                                         </div>                                     </dd>  <dd data-info="13245.55">                                         <div class="inner">                                             <span class="title color-sell">卖 3</span>                                             <span class="price">13245.55</span>                                             <span class="amount">0.2055</span>                                             <span>1.3858</span>                                             <b class="color-sell-bg" style="width: 21.63157894736842%"></b>                                         </div>                                     </dd>  <dd data-info="13245.26">                                         <div class="inner">                                             <span class="title color-sell">卖 2</span>                                             <span class="price">13245.26</span>                                             <span class="amount">0.2303</span>                                             <span>1.1803</span>                                             <b class="color-sell-bg" style="width: 24.242105263157896%"></b>                                         </div>                                     </dd>  <dd data-info="13245.25">                                         <div class="inner">                                             <span class="title color-sell">卖 1</span>                                             <span class="price">13245.25</span>                                             <span class="amount">0.9500</span>                                             <span>0.9500</span>                                             <b class="color-sell-bg" style="width: 100%"></b>                                         </div>                                     </dd>  </dl>                                 <div class="dl-hr">                                     <hr><hr>                                 </div>                                 <dl>  <dd name="depth-item" data-info="13222.35">                                         <div class="inner">                                             <span class="title color-buy">买 1</span>                                             <span class="price">13222.35</span>                                             <span class="amount">0.3020</span>                                             <span>0.3020</span>                                             <b class="color-buy-bg" style="width: 31.789473684210527%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13222.30">                                         <div class="inner">                                             <span class="title color-buy">买 2</span>                                             <span class="price">13222.30</span>                                             <span class="amount">0.0607</span>                                             <span>0.3626</span>                                             <b class="color-buy-bg" style="width: 6.389473684210527%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13222.15">                                         <div class="inner">                                             <span class="title color-buy">买 3</span>                                             <span class="price">13222.15</span>                                             <span class="amount">0.3735</span>                                             <span>0.7362</span>                                             <b class="color-buy-bg" style="width: 39.31578947368421%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13222.00">                                         <div class="inner">                                             <span class="title color-buy">买 4</span>                                             <span class="price">13222.00</span>                                             <span class="amount">0.3519</span>                                             <span>1.0880</span>                                             <b class="color-buy-bg" style="width: 37.04210526315789%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13220.00">                                         <div class="inner">                                             <span class="title color-buy">买 5</span>                                             <span class="price">13220.00</span>                                             <span class="amount">0.0455</span>                                             <span>1.1336</span>                                             <b class="color-buy-bg" style="width: 4.789473684210526%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13219.96">                                         <div class="inner">                                             <span class="title color-buy">买 6</span>                                             <span class="price">13219.96</span>                                             <span class="amount">0.0132</span>                                             <span>1.1468</span>                                             <b class="color-buy-bg" style="width: 1.3894736842105264%"></b>                                         </div>                                     </dd>  <dd name="depth-item" data-info="13218.07">                                         <div class="inner">                                             <span class="title color-buy">买 7</span>                                             <span class="price">13218.07</span>                                             <span class="amount">0.0614</span>                                             <span>1.2082</span>                                             <b class="color-buy-bg" style="width: 6.463157894736843%"></b>                                         </div>                                     </dd>  </dl></div><div class="link-group clearFix"><div id="depth_select" class="depth-select">深度 <span id="depth_step">0.000001</span><ul><li class="active" data-depth="0">0.000001</li><li data-depth="1">0.00001</li><li data-depth="2">0.0001</li></ul></div><a href="../depth/?trade=exchange" lazyfill="attr" data-attr="href" data-template="../depth/?trade=&lt;%=TRADE_TYPE%&gt;">更多</a></div></div></div></div><div class="mod open_orders" id="open_orders_scroll" style="display: none;"><div class="mod_hd l_transac_title"><span class="mod_show_btn"><button><i></i></button><span>当前委托</span></span><ul class="l_tab_transac"><li data-type="buy"><a href="javascript:;">买入</a></li><li data-type="sell"><a href="javascript:;">卖出</a></li><li class="z_active" data-type="all"><a href="javascript:;">全部</a></li></ul></div><div class="mod_bd transac_body l_show_box"><div class="transac_body_main"><div class="transac_table_box" id="open_orders" style="display:block"><div class="loading"></div><div id="open_orders_body"><ul class="l_th"><li>时间</li><li>交易对</li><li>方向</li><li>价格</li><li>数量</li><li>委托总额</li><li>已成交</li><li>未成交</li><li>操作</li></ul><div class="list_prompt J_list_prompt" style="display: block">暂无记录</div><div class="l_paging"></div><script type="text/x-template" id="open_orders_list"> <%
+            var _data   = __data.data || [],
+                _len    = _data.length,
+                prev    = __data.prev,
+                next    = __data.next,
+                active  = __data.active,
+                coin    = __data.coin && __data.coin.toUpperCase(),
+                quote   = __data.coin && __data.quote.toUpperCase();
+            %> <ul class="l_th">
+                <li>时间</li>
+                <li>交易对</li>
+                <li>方向</li>
+                <li>价格<%if(quote){%> (<%=quote%>)<%}%></li>
+                <li>数量<%if(coin){%> (<%=coin%>)<%}%></li>
+                <li>委托总额<%if(quote){%> (<%=quote%>)<%}%></li>
+                <li>已成交</li>
+                <li>未成交</li>
+                <li>操作</li>
+
+            </ul>
+            <div class="list_prompt J_list_prompt">暂无记录</div>
+            <div class="list_prompt m_search J_list_prompt_search">没有匹配的搜索结果</div>
+            <div class="l_transac_list"> <%
+                for(_i=0;_i < _len;_i++){
+                    _tr = _data[_i];
+                %> <div class="l_tr">
+                        <ul>
+                            <li><%=_tr.data%></li>
+                            <li><%=_tr.pairs%></li> <%
+                            if(_tr.source == 'fl-mgt' || _tr.source == 'fl-sys'){
+                            %> <li class="color_<%=_tr.type.class%>"><%=_tr.type.value == 'SELL' ? '系统卖出' : '系统买入'%></li> <%
+                            }
+                            else{
+                            %> <li class="color_<%=_tr.type.class%>"><%=_tr.type.value == 'SELL' ? '卖出' : '买入'%></li> <%
+                            }
+                            if(_tr.price == "市价"){
+                            %> <li>市价</li> <%
+                            }
+                            else{
+                            %> <li><%=_tr.price%></li> <%}%> <li><%=_tr.amount%></li>
+                            <li><%=_tr.total%></li>
+                            <li><%=_tr.executed%></li>
+                            <li><%=_tr.unexecuted%></li>
+                            <li> <%
+                                if(_tr.market == 0 && _tr.source != 'fl-mgt' && _tr.source != 'fl-sys'){
+                                %> <a href="javascript:;" data-id="<%=_tr.id%>" class="btn_cancel">撤单</a> <%
+                                }
+                                %> </li>
+                        </ul>
+                    </div> <%}%> </div>
+            <div class="l_paging">
+                <ul> <%
+                    if(active > 0){
+                    %> <li>
+                        <a href="javascript:;" data-page-id="<%=prev%>" data-page-type="prev">上一页</a>
+                    </li> <%
+                    }
+                    %> <%
+                    if(next){
+                    %> <li>
+                        <a href="javascript:;" data-page-id="<%=next%>" data-page-type="next">下一页</a>
+                    </li> <%
+                    }
+                    %> </ul>
+            </div></script></div></div></div></div></div><div class="mod order_history" id="order_history_scroll" style="display: none;"><div class="mod_hd l_transac_title"><span class="mod_show_btn"><button><i></i></button><span>委托历史</span></span><ul class="l_tab_transac"><li data-type="buy"><a href="javascript:;">买入</a></li><li data-type="sell"><a href="javascript:;">卖出</a></li><li class="z_active" data-type="all"><a href="javascript:;">全部</a></li></ul></div><div class="mod_bd transac_body l_show_box"><div class="transac_body_main"><div class="transac_table_box order_history" id="order_history" style="display: block;"><div class="loading"></div><div id="order_history_body"><ul class="l_th"><li>时间</li><li>交易对</li><li>方向</li><li>价格</li><li>委托量</li><li>已成交</li><li>成交均价</li><li>状态</li><li>操作</li></ul><div class="list_prompt J_list_prompt" style="display: block">暂无记录</div><div class="l_paging"></div><script type="text/x-template" id="order_history_list"> <%
+            var _data   = __data.data || [],
+                _len    = _data.length,
+                prev    = __data.prev,
+                next    = __data.next,
+                active  = __data.active,
+                coin    = __data.coin && __data.coin.toUpperCase(),
+                quote   = __data.coin && __data.quote.toUpperCase();
+            %> <ul class="l_th">
+                <li>时间</li>
+                <li>交易对</li>
+                <li>方向</li>
+                <li>价格<%if(quote){%> (<%=quote%>)<%}%></li>
+                <li>委托量</li>
+                <li>已成交<%if(coin){%> (<%=coin%>)<%}%></li>
+                <li>成交均价</li>
+                <li>状态</li>
+                <li>操作</li>
+            </ul>
+            <div class="list_prompt J_list_prompt">暂无记录</div>
+            <div class="list_prompt m_search J_list_prompt_search">没有匹配的搜索结果</div>
+            <div  class="l_transac_list"> <%
+                for(_i=0;_i < _len;_i++){
+                    _tr = _data[_i];
+                %> <div class="l_tr">
+                        <ul>
+                            <li><%=_tr.data%></li>
+                            <li><%=_tr.pairs%></li> <%
+                            if(_tr.source == 'fl-mgt' || _tr.source == 'fl-sys'){
+                            %> <li class="color_<%=_tr.type.class%>"><%=_tr.type.value == 'SELL' ? '系统卖出' : '系统买入'%></li> <%
+                            }
+                            else{
+                            %> <li class="color_<%=_tr.type.class%>"><%=_tr.type.value == 'SELL' ? '卖出' : '买入'%></li> <%
+                            }
+                            if(_tr.price == "市价"){
+                            %> <li>市价</li> <%
+                            }
+                            else{
+                            %> <li><%=_tr.price%></li> <%}%> <li><%=_tr.amount%></li>
+                            <li><%=_tr.unexecuted%></li>
+                            <li><%=_tr.averageprice%></li>
+                            <li> <%
+                                switch(_tr.status){
+                                case 'canceled':
+                                %> 已撤销 <%
+                                break;
+                                case 'partial-filled':
+                                %> 部分成交 <%
+                                break;
+                                case 'partial-canceled':
+                                %> 部分成交 <%
+                                break;
+                                case 'filled':
+                                %> 已成交 <%
+                                break;
+                                }
+                                %> </li>
+                            <li> <%
+                                if(_tr.status != "canceled"){
+                                %> <a href="javascript:;" data-drop-down="<%=_tr.id%>" data-drop-pair="<%=_tr.pairs%>" class="btn_details"><span></span>详情<i></i></a> <%
+                                }
+                                %> </li>
+                        </ul> <%
+                        if(_tr.status != "canceled"){
+                        %> <div class="l_drop_down_box">
+                            <div class="l_drop_down_list">
+                                <i class="z-border"></i>
+                                <i></i>
+                                <ul class="drop_down_th">
+                                    <li>时间</li>
+                                    <li>价格<%if(quote){%> (<%=quote%>)<%}%></li>
+                                    <li>数量<%if(coin){%> (<%=coin%>)<%}%></li>
+                                    <li>成交额<%if(quote){%> (<%=quote%>)<%}%></li>
+                                    <li>手续费</li>
+                                </ul>
+                                <div class="drop_down_scroll">
+                                    <div class="drop_down_body"></div>
+                                </div>
+                            </div>
+                        </div> <%
+                        }
+                        %> </div> <%}%> </div>
+            <div class="l_paging">
+                <ul> <%
+                    if(active > 0){
+                    %> <li>
+                        <a href="javascript:;" data-page-id="<%=prev%>" data-page-type="prev">上一页</a>
+                    </li> <%
+                    }
+                    %> <%
+                    if(next){
+                    %> <li>
+                        <a href="javascript:;" data-page-id="<%=next%>" data-page-type="next">下一页</a>
+                    </li> <%
+                    }
+                    %> </ul>
+            </div></script></div></div></div></div></div><div class="market_wrap"><div class="market_depth mod"><div class="mod_hd"><span class="mod_show_btn"><button><i></i></button><span>深度图</span></span></div><div class="mod_bd"><div class="market_depth_chart" id="depth_chart" style="position: relative;"><canvas width="502" height="470" style="position: absolute;"></canvas><canvas width="502" height="470" style="position: absolute;"></canvas></div></div></div><div class="mod market_trades"><div class="mod_hd"><span class="mod_show_btn"><button><i></i></button><span>实时成交</span></span></div><div class="mod_bd"><div class="market_trades_list" id="market_trades_list"><dl class="market_trades_time">                                         <dt>时间</dt>  <dd>15:13:49</dd>  <dd>15:13:40</dd>  <dd>15:13:40</dd>  <dd>15:13:34</dd>  <dd>15:13:33</dd>  <dd>15:13:33</dd>  <dd>15:13:33</dd>  <dd>15:13:33</dd>  <dd>15:13:33</dd>  <dd>15:13:33</dd>  <dd>15:13:31</dd>  <dd>15:13:31</dd>  <dd>15:13:27</dd>  <dd>15:13:23</dd>  <dd>15:13:18</dd>  <dd>15:13:17</dd>  <dd>15:13:17</dd>  <dd>15:13:17</dd>  <dd>15:13:17</dd>  <dd>15:13:17</dd>  <dd>15:13:17</dd>  <dd>15:13:16</dd>  <dd>15:13:10</dd>  <dd>15:13:09</dd>  <dd>15:13:07</dd>  <dd>15:13:07</dd>  <dd>15:13:07</dd>  <dd>15:13:07</dd>  <dd>15:13:07</dd>  <dd>15:13:07</dd>  <dd>15:13:03</dd>  <dd>15:12:56</dd>  <dd>15:12:55</dd>  <dd>15:12:55</dd>  <dd>15:12:55</dd>  <dd>15:12:55</dd>  <dd>15:12:50</dd>  <dd>15:12:50</dd>  <dd>15:12:49</dd>  <dd>15:12:48</dd>  <dd>15:12:48</dd>  <dd>15:12:48</dd>  <dd>15:12:43</dd>  <dd>15:12:43</dd>  <dd>15:12:43</dd>  <dd>15:12:43</dd>  <dd>15:12:43</dd>  <dd>15:12:43</dd>  <dd>15:12:42</dd>  <dd>15:12:39</dd>  <dd>15:12:39</dd>  <dd>15:12:30</dd>  <dd>15:12:30</dd>  <dd>15:12:30</dd>  <dd>15:12:29</dd>  <dd>15:12:29</dd>  <dd>15:12:29</dd>  <dd>15:12:29</dd>  <dd>15:12:29</dd>  <dd>15:12:28</dd>  <dd>15:12:27</dd>  <dd>15:12:26</dd>  <dd>15:12:19</dd>  <dd>15:12:18</dd>  <dd>15:12:18</dd>  <dd>15:12:17</dd>  <dd>15:12:08</dd>  <dd>15:12:08</dd>  <dd>15:12:07</dd>  <dd>15:12:01</dd>  <dd>15:12:01</dd>  <dd>15:12:01</dd>  <dd>15:11:59</dd>  <dd>15:11:59</dd>  <dd>15:11:59</dd>  <dd>15:11:54</dd>  <dd>15:11:51</dd>  <dd>15:11:51</dd>  <dd>15:11:51</dd>  <dd>15:11:51</dd>  <dd>15:11:51</dd>  <dd>15:11:48</dd>  <dd>15:11:45</dd>  <dd>15:11:39</dd>  <dd>15:11:37</dd>  <dd>15:11:28</dd>  <dd>15:11:27</dd>  <dd>15:11:26</dd>  <dd>15:11:26</dd>  <dd>15:11:26</dd>  <dd>15:11:26</dd>  <dd>15:11:26</dd>  <dd>15:11:25</dd>  <dd>15:11:22</dd>  <dd>15:11:21</dd>  <dd>15:11:21</dd>  <dd>15:11:21</dd>  <dd>15:11:21</dd>  <dd>15:11:21</dd>  <dd>15:11:21</dd>  </dl>                                     <dl class="market_trades_type">                                         <dt>方向</dt>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_up">买入</dd>  <dd class="color_up">买入</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  <dd class="color_down">卖出</dd>  </dl>                                     <dl class="market_trades_price">                                         <dt>价格<span class="uppercase">(usdt)</span></dt>  <dd>13222.35</dd>  <dd>13245.43</dd>  <dd>13245.32</dd>  <dd>13229.05</dd>  <dd>13229.05</dd>  <dd>13229.05</dd>  <dd>13229.00</dd>  <dd>13229.05</dd>  <dd>13229.00</dd>  <dd>13229.00</dd>  <dd>13229.00</dd>  <dd>13229.00</dd>  <dd>13233.89</dd>  <dd>13222.52</dd>  <dd>13245.50</dd>  <dd>13245.50</dd>  <dd>13222.50</dd>  <dd>13222.52</dd>  <dd>13222.55</dd>  <dd>13222.55</dd>  <dd>13222.55</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13222.57</dd>  <dd>13231.00</dd>  <dd>13231.00</dd>  <dd>13231.00</dd>  <dd>13243.49</dd>  <dd>13243.50</dd>  <dd>13243.60</dd>  <dd>13245.60</dd>  <dd>13244.60</dd>  <dd>13244.61</dd>  <dd>13245.60</dd>  <dd>13245.60</dd>  <dd>13245.60</dd>  <dd>13243.58</dd>  <dd>13243.58</dd>  <dd>13243.58</dd>  <dd>13243.58</dd>  <dd>13243.58</dd>  <dd>13243.58</dd>  <dd>13243.54</dd>  <dd>13243.49</dd>  <dd>13243.50</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.60</dd>  <dd>13243.60</dd>  <dd>13243.60</dd>  <dd>13244.60</dd>  <dd>13244.61</dd>  <dd>13245.63</dd>  <dd>13245.63</dd>  <dd>13245.61</dd>  <dd>13243.60</dd>  <dd>13243.59</dd>  <dd>13243.59</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13244.05</dd>  <dd>13243.49</dd>  <dd>13243.51</dd>  <dd>13243.56</dd>  <dd>13243.56</dd>  <dd>13243.56</dd>  <dd>13244.61</dd>  <dd>13243.56</dd>  <dd>13243.54</dd>  <dd>13243.51</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.49</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.54</dd>  <dd>13243.54</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  <dd>13243.51</dd>  </dl>                                     <dl class="market_trades_amount">                                         <dt>数量<span class="uppercase">(btc)</span></dt>  <dd>0.0908</dd>  <dd>0.0174</dd>  <dd>0.0580</dd>  <dd>0.0193</dd>  <dd>0.0097</dd>  <dd>0.0096</dd>  <dd>0.0193</dd>  <dd>0.0193</dd>  <dd>0.0193</dd>  <dd>0.0812</dd>  <dd>0.1521</dd>  <dd>0.1000</dd>  <dd>0.5726</dd>  <dd>0.1007</dd>  <dd>0.0909</dd>  <dd>0.0086</dd>  <dd>0.1953</dd>  <dd>0.1067</dd>  <dd>0.0172</dd>  <dd>0.0172</dd>  <dd>0.0170</dd>  <dd>0.0002</dd>  <dd>0.0741</dd>  <dd>0.0522</dd>  <dd>0.0172</dd>  <dd>0.0172</dd>  <dd>0.0394</dd>  <dd>0.0501</dd>  <dd>0.0172</dd>  <dd>0.0172</dd>  <dd>0.0755</dd>  <dd>0.0525</dd>  <dd>0.4388</dd>  <dd>0.0640</dd>  <dd>0.0251</dd>  <dd>0.0214</dd>  <dd>0.0069</dd>  <dd>0.0931</dd>  <dd>0.0069</dd>  <dd>0.1075</dd>  <dd>0.1000</dd>  <dd>0.1000</dd>  <dd>0.0011</dd>  <dd>0.0011</dd>  <dd>0.0011</dd>  <dd>0.0011</dd>  <dd>0.0126</dd>  <dd>0.0076</dd>  <dd>0.8650</dd>  <dd>0.0949</dd>  <dd>0.0051</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.0100</dd>  <dd>0.1000</dd>  <dd>0.1900</dd>  <dd>0.0050</dd>  <dd>0.0800</dd>  <dd>0.0200</dd>  <dd>0.0249</dd>  <dd>0.0087</dd>  <dd>0.0293</dd>  <dd>0.0111</dd>  <dd>0.0475</dd>  <dd>0.1000</dd>  <dd>0.0626</dd>  <dd>0.2374</dd>  <dd>0.0150</dd>  <dd>0.0298</dd>  <dd>0.0298</dd>  <dd>0.6172</dd>  <dd>0.2970</dd>  <dd>0.0025</dd>  <dd>0.0408</dd>  <dd>0.0408</dd>  <dd>0.0013</dd>  <dd>0.0019</dd>  <dd>0.0191</dd>  <dd>0.0204</dd>  <dd>0.1000</dd>  <dd>0.0500</dd>  <dd>0.0500</dd>  <dd>0.0594</dd>  <dd>0.0160</dd>  <dd>0.0160</dd>  <dd>0.0086</dd>  <dd>0.0019</dd>  <dd>0.0024</dd>  <dd>0.0459</dd>  <dd>0.0230</dd>  <dd>0.0031</dd>  <dd>0.0160</dd>  <dd>0.0059</dd>  <dd>0.0021</dd>  <dd>0.0080</dd>  </dl></div></div></div></div></div></div></div><div class="layout_foot doc_foot"><div class="doc_foot_wrap"><dl><dt><h1>Huobi.pro</h1></dt><dd><h2>全球领先的数字资产交易平台</h2></dd><dd class="copyright"> 2013-2018 HUOBI.PRO</dd></dl><dl><dt><h2>服务支持</h2></dt><dd><a href="https://github.com/huobiapi/API_Docs/wiki" target="_blank">API 文档</a></dd><dd><a href="/zh-cn/help/" target="_blank">帮助中心</a></dd><dd><a href="/zh-cn/assetintro/" target="_blank">数字资产介绍</a></dd><dd><a href="/zh-cn/coinstandard/" target="_blank">上币申请及说明</a></dd><dd><a href="/zh-cn/smartchain/" target="_blank">SMARTChain</a></dd><!-- <dd>
+        <a href="/zh-cn/" target="_blank">APP</a>
+      </dd> --></dl><dl><dt><h2>关于</h2></dt><dd><a href="/zh-cn/about/fee" target="_blank">费率</a></dd><dd><a href="/zh-cn/notice" target="_blank">公告</a></dd><dd><a href="/zh-cn/about" target="_blank">关于我们</a></dd><dd><a href="/zh-cn/careers" target="_blank">加入我们</a></dd></dl><dl><dt><h2>法律</h2></dt><dd><a href="/zh-cn/about/agreement/" target="_blank">用户协议</a></dd><dd><a href="/zh-cn/about/privacy" target="_blank">隐私条款</a></dd><dd><a href="/zh-cn/about/law" target="_blank">法律声明</a></dd></dl><dl><dt><h2>联系我们</h2></dt><dd class="email"><a href="mailto:support@huobi.pro">support@huobi.pro</a></dd><dd class="icons"><div class="icons_line"><a href="https://weibo.com/u/6385759349" target="_blank"><i class="hb_icon_weibo"></i> </a><a href="javascript:void(0);" class="has_qr"><i class="hb_icon_wechat"></i><div class="qr_wechat"></div></a><a href="https://twitter.com/HUOBI_Pro" target="_blank"><i class="hb_icon_twitter"></i> </a><a href="https://t.me/huobiproofficial" target="_blank"><i class="hb_icon_telegram"></i></a></div><div><a href="https://www.youtube.com/channel/UCABkgL5rRAk61E2Qtjtqcxw/featured" target="_blank"><i class="hb_icon_youtube"></i> </a><a href="https://medium.com/huobi-global" target="_blank"><i class="hb_icon_medium"></i></a></div></dd></dl></div></div><script>window.zESettings = {
+    webWidget: {
+      contactOptions: {
+        enabled: true
+      }
+    }
+  };
+  window.zEmbed || (!function (e, t) {
+    var n, o, d, i, s, a = [],
+      r = document.createElement("iframe");
+    window.zEmbed = function () {
+      a.push(arguments)
+    }, window.zE = window.zE || window.zEmbed, r.src = "javascript:false", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "display: none", d = document.getElementsByTagName("script"), d = d[d.length - 1], d.parentNode.insertBefore(r, d), i = r.contentWindow, s = i.document;
+    try {
+      o = s
+    } catch (e) {
+      n = document.domain, r.src = 'javascript:var d=document.open();d.domain="' + n + '";void(0);', o = s
+    }
+    o.open()._l = function () {
+      var e = this.createElement("script");
+      n && (this.domain = n), e.id = "js-iframe-async", e.src = "https://assets.zendesk.com/embeddable_framework/main.js", this.t = +new Date, this.zendeskHost = "huobiglobal.zendesk.com", this.zEQueue = a, this.body.appendChild(e)
+    }, o.write('<body onload="document._l();">'), o.close()
+  }(),zE(function () {
+    zE.setLocale('zh-cn')
+  }));</script><div class="component_tips" style="visibility: hidden; top: -999px;">
+    <i class="icon"></i>
+    <div class="msg"></div>
+</div><div class="component_tips" style="visibility: hidden; top: -999px;">
+    <i class="icon"></i>
+    <div class="msg"></div>
+</div><div class="component_tips" style="visibility: hidden; top: -999px;">
+    <i class="icon"></i>
+    <div class="msg"></div>
+</div><div class="component_tips" style="visibility: hidden; top: -999px;">
+    <i class="icon"></i>
+    <div class="msg"></div>
+</div><div class="component_tips" style="visibility: hidden; top: -999px;">
+    <i class="icon"></i>
+    <div class="msg"></div>
+</div></body></html>
