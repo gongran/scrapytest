@@ -1,5 +1,7 @@
 # coding=utf-8
 
+import time
+
 import pymysql
 from selenium import webdriver
 
@@ -11,36 +13,8 @@ class CommonSp:
         url = []
         self.db = pymysql.connect("localhost", "root", "root", "market")
         self.driver = webdriver.PhantomJS()
-        self.driver.get("https://www.huobipro.com/zh-cn/coin_coin/exchange/")
-        try:
-            html = self.driver.find_elements_by_xpath("//div[@class='coin_filter']/span[@action='userfilter']")
-            i = 0
-            coinItemList = []
-            while i < len(html):
-                yx = html[i]
-                cp_type = yx.text
-                print(cp_type)
-                yx.click()
-                ch = self.driver.find_elements_by_xpath("//dl[@action='gourl']")
-                j = 0
-                while j < len(ch):
-                    ci = CoinItem()
-                    ci.cp_type = cp_type
-                    yy = ch[j]
-                    price = yy.find_elements_by_xpath(".//dd/div/div/span[2]")
-                    cp_key = yy.find_elements_by_xpath(".//dd/div/div/span[1]/em")[0].text
-                    ci.cp_key = cp_key
-                    cp_name = yy.get_attribute("data-symbol")
-                    cp_value = price[0].text
-                    ci.cp_name = cp_name
-                    ci.cp_value = cp_value
-                    print(cp_name + ":" + cp_value)
-                    j += 1
-                    coinItemList.append(ci)
-                i += 1
-            self.insertList(coinItemList)
-        finally:
-            self.driver.quit()
+        self.url = "https://www.huobipro.com/zh-cn/coin_coin/exchange/"
+        self.crawlHb()
 
     def printHb(self, adress):
         if self.url.count(adress) > 0:
@@ -49,7 +23,58 @@ class CommonSp:
             self.url.append(adress)
             print("不存在已经添加")
 
+    def crawlHb(self):
+        con = True
+        while True:
+            timeStr = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            print("开始时间:" + timeStr)
+            handles = self.driver.window_handles
+            if len(handles) > 1:
+                print(self.driver.current_window_handle)
+                self.driver.close()
+            if con:
+                self.driver.get(self.url)
+                con = False
+            else:
+                newwindow = 'window.open("' + self.url + '");'
+                print(newwindow)
+                self.driver.switch_to_window(handles[-1])
+                self.driver.execute_script(newwindow)
+                handles = self.driver.window_handles
+
+            try:
+                html = self.driver.find_elements_by_xpath("//div[@class='coin_filter']/span[@action='userfilter']")
+                i = 0
+                coinItemList = []
+                while i < len(html):
+                    yx = html[i]
+                    cp_type = yx.text
+                    print(cp_type)
+                    yx.click()
+                    ch = self.driver.find_elements_by_xpath("//dl[@action='gourl']")
+                    j = 0
+                    while j < len(ch):
+                        ci = CoinItem()
+                        ci.cp_type = cp_type
+                        yy = ch[j]
+                        price = yy.find_elements_by_xpath(".//dd/div/div/span[2]")
+                        cp_key = yy.find_elements_by_xpath(".//dd/div/div/span[1]/em")[0].text
+                        ci.cp_key = cp_key
+                        cp_name = yy.get_attribute("data-symbol")
+                        cp_value = price[0].text
+                        ci.cp_name = cp_name
+                        ci.cp_value = cp_value
+                        print(cp_name + ":" + cp_value)
+                        j += 1
+                        coinItemList.append(ci)
+                    i += 1
+                self.insertList(coinItemList)
+            finally:
+                # self.driver.quit()
+                pass
+
     def insertList(self, list):
+        self.db = pymysql.connect("localhost", "root", "root", "market")
         cursor = self.db.cursor()
         try:
             for cl in list:
