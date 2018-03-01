@@ -1,5 +1,5 @@
 from selenium import webdriver
-
+# 分析全球排名前20的交易所上的币种
 class BlockChain:
     def __init__(self):
         self.driver = webdriver.PhantomJS()
