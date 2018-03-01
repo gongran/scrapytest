@@ -23,8 +23,8 @@ class BlockChain:
         self.marketMap={}
     def fenxi(self):
         # 使用set得到去重后的币种
-        ss=set()
         for url in self.urls:
+            ss=set()
             print(url)
             marketName=url[:-1]
             marketName=marketName[marketName.rfind('/')+1:]
