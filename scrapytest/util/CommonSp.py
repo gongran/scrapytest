@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import time
-
+import datetime
 import pymysql
 from selenium import webdriver
 
@@ -82,11 +82,12 @@ class CommonSp:
                 sql = "select * from coin_price where cp_name=%s"
                 cursor.execute(sql, (cp_name))
                 data = cursor.fetchone()
+                dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 if data:
-                    sql = "update coin_price set cp_key=%s,cp_type=%s,cp_value=%s,cp_open=%s,cp_close=%s,cp_height=%s,cp_low=%s where cp_name=%s"
+                    sql = "update coin_price set cp_key=%s,cp_type=%s,cp_value=%s,cp_open=%s,cp_close=%s,cp_height=%s,cp_low=%s,last_ud=%s where cp_name=%s"
                     cursor.execute(sql,
                                    (cl.cp_key, cl.cp_type, cl.cp_value, cl.cp_open, cl.cp_close, cl.cp_height,
-                                    cl.cp_low, cl.cp_name))
+                                    cl.cp_low,dt, cl.cp_name))
                 else:
                     sql = "insert into coin_price (cp_name,cp_key,cp_type,cp_value,cp_open,cp_close,cp_height,cp_low)values(%s,%s,%s,%s,%s,%s,%s,%s)"
                     cursor.execute(sql,
